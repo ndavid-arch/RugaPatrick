@@ -46,11 +46,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   justify-content: center;
   overflow: hidden;
-<<<<<<< HEAD
-  transition: opacity 0.8s var(--ease), visibility 0.8s;
-=======
-  transition: opacity 1.5s var(--ease), visibility 1.5s;
->>>>>>> f2885e3d87f4c3ec5e467f15bb1c584b189c22d5
+  transition: opacity 0.9s var(--ease), visibility 0.9s;
 }
 #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
@@ -58,20 +54,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   inset: 0;
   pointer-events: none;
+  opacity: 0.72;
+  filter: blur(0.6px);
 }
 .lp-piece {
   position: absolute;
   color: var(--cream);
   opacity: 0;
   transform: scale(0) rotate(0deg);
-<<<<<<< HEAD
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-=======
-  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
->>>>>>> f2885e3d87f4c3ec5e467f15bb1c584b189c22d5
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 .lp-piece.show {
-  opacity: 0.18;
+  opacity: 0.1;
   transform: scale(1) rotate(var(--rot));
 }
 
@@ -92,31 +86,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   opacity: 0;
   transform: translateY(20px);
   display: inline-block;
-<<<<<<< HEAD
-  transition: opacity 0.4s, transform 0.4s;
+  transition: opacity 0.55s, transform 0.55s;
 }
 #loader-name span.show { opacity: 1; transform: translateY(0); }
 #loader-sub {
   font-family: var(--font-sans);
-  font-size: clamp(0.9rem, 2vw, 1.3rem);
-=======
-  transition: opacity 0.8s, transform 0.8s;
-}
-#loader-name span.show { opacity: 1; transform: translateY(0); }
-#loader-sub {
-  font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 3vw, 2rem);
->>>>>>> f2885e3d87f4c3ec5e467f15bb1c584b189c22d5
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--gold);
   margin-top: 0.5rem;
   opacity: 0;
-<<<<<<< HEAD
-  transition: opacity 0.6s 0.3s;
-=======
-  transition: opacity 0.6s;
->>>>>>> f2885e3d87f4c3ec5e467f15bb1c584b189c22d5
+  transition: opacity 0.5s 0.2s;
 }
 #loader-sub.show { opacity: 1; }
 
@@ -132,7 +113,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute;
   left: 0; top: 0;
   color: var(--ink);
-  opacity: 0.055;
+  opacity: 0.04;
   pointer-events: none;
 }
 

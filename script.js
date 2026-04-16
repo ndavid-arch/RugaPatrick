@@ -83,7 +83,7 @@ const PATTERNS = [
   if (!loader) return;
 
   // Place random pattern tiles across the loader
-  const TILE_COUNT = 28;
+  const TILE_COUNT = 14;
   const tiles = [];
   for (let i = 0; i < TILE_COUNT; i++) {
     const el = document.createElement('div');
@@ -103,7 +103,7 @@ const PATTERNS = [
 
   // Stagger tiles in
   tiles.forEach((t, i) => {
-    setTimeout(() => t.classList.add('show'), 60 + i * 70);
+    setTimeout(() => t.classList.add('show'), 120 + i * 85);
   });
 
   // Animate name letters
@@ -113,13 +113,13 @@ const PATTERNS = [
   });
 
   // Show subtitle
-  if (loaderSub) setTimeout(() => loaderSub.classList.add('show'), 400 + letters.length * 60 + 200);
+  if (loaderSub) setTimeout(() => loaderSub.classList.add('show'), 360 + letters.length * 55 + 140);
 
   // Hide loader after animation
   window.addEventListener('load', () => {
     setTimeout(() => {
       loader.classList.add('hidden');
-    }, 5000);
+    }, 1700);
   });
 })();
 
@@ -128,12 +128,12 @@ const PATTERNS = [
   const container = document.getElementById('bg-patterns');
   if (!container) return;
 
-  const COUNT        = 38;
+  const COUNT        = 24;
   const REPEL_RADIUS = 170;   // px — how close cursor must be to push
-  const REPEL_FORCE  = 8;     // strength of push
-  const WANDER       = 0.045; // random drift each frame
-  const DAMPING      = 0.91;  // velocity decay (< 1 = slows down)
-  const SPRING       = 0.007; // pull back toward home position
+  const REPEL_FORCE  = 5.5;   // strength of push
+  const WANDER       = 0.028; // random drift each frame
+  const DAMPING      = 0.93;  // velocity decay (< 1 = slows down)
+  const SPRING       = 0.005; // pull back toward home position
 
   /* Track mouse in viewport coords */
   const mouse = { x: -9999, y: -9999 };
