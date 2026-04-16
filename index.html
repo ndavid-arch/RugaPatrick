@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ruganintwali Patrick — Imigongo Artist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== LOADER ===================== -->
+  <div id="loader">
+    <div id="loader-patterns"></div>
+    <div id="loader-center">
+      <div id="loader-name">
+        <span>R</span><span>u</span><span>g</span><span>a</span><span>n</span><span>i</span><span>n</span><span>t</span><span>w</span><span>a</span><span>l</span><span>i</span>
+      </div>
+      <div id="loader-sub">Patrick</div>
+    </div>
+  </div>
+
+  <!-- ===================== BACKGROUND PATTERNS ===================== -->
+  <div id="bg-patterns" aria-hidden="true"></div>
+
+  <!-- ===================== CUSTOM CURSOR ===================== -->
+  <div id="custom-cursor" aria-hidden="true"></div>
+
+  <!-- ===================== NAV ===================== -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">RP</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="exhibition.html">Exhibitions</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===================== HERO SLIDESHOW ===================== -->
+  <section id="hero">
+    <!-- Cursor zones (invisible overlays) -->
+    <div class="cursor-zone left" id="zoneLeft"></div>
+    <div class="cursor-zone right" id="zoneRight"></div>
+
+    <div class="slides-wrapper">
+      <!-- SLIDE 1 -->
+      <div class="slide active">
+        <div class="slide-img-wrap">
+          <!-- Replace src with real photo -->
+          <img src="images/patrick-1.jpg" alt="Ruganintwali Patrick"
+               onerror="this.parentElement.classList.add('img-placeholder'); this.style.display='none'"/>
+          <div class="img-placeholder-label">Portrait — Ruganintwali Patrick</div>
+        </div>
+        <div class="slide-caption">
+          <p class="slide-eyebrow">Imigongo Master</p>
+          <h1>Ruganintwali<br/>Patrick</h1>
+          <p class="slide-tagline">Keeping Rwanda's oldest art form alive</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide">
+        <div class="slide-img-wrap">
+          <img src="images/patrick-2.jpg" alt="Patrick at work"
+               onerror="this.parentElement.classList.add('img-placeholder'); this.style.display='none'"/>
+          <div class="img-placeholder-label">Patrick at work</div>
+        </div>
+        <div class="slide-caption">
+          <p class="slide-eyebrow">The Process</p>
+          <h1>Art Rooted<br/>in Tradition</h1>
+          <p class="slide-tagline">Cow dung, earth pigments, and ancestral patterns</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide">
+        <div class="slide-img-wrap">
+          <img src="images/patrick-3.jpg" alt="Imigongo piece"
+               onerror="this.parentElement.classList.add('img-placeholder'); this.style.display='none'"/>
+          <div class="img-placeholder-label">Imigongo close-up</div>
+        </div>
+        <div class="slide-caption">
+          <p class="slide-eyebrow">Geometric Mastery</p>
+          <h1>Where Geometry<br/>Meets Culture</h1>
+          <p class="slide-tagline">Every spiral tells a story</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide">
+        <div class="slide-img-wrap">
+          <img src="images/patrick-4.jpg" alt="Exhibition"
+               onerror="this.parentElement.classList.add('img-placeholder'); this.style.display='none'"/>
+          <div class="img-placeholder-label">At an exhibition</div>
+        </div>
+        <div class="slide-caption">
+          <p class="slide-eyebrow">Global Stage</p>
+          <h1>Rwanda's Art<br/>to the World</h1>
+          <p class="slide-tagline">Exhibited across Africa and beyond</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide indicators -->
+    <div class="slide-dots">
+      <button class="dot active" data-index="0"></button>
+      <button class="dot" data-index="1"></button>
+      <button class="dot" data-index="2"></button>
+      <button class="dot" data-index="3"></button>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===================== BIO ===================== -->
+  <section id="bio">
+    <div class="section-inner">
+      <div class="bio-label">About the Artist</div>
+      <div class="bio-grid">
+        <div class="bio-portrait">
+          <div class="bio-img-frame">
+            <img src="images/bio-portrait.jpg" alt="Ruganintwali Patrick — portrait"
+                 onerror="this.parentElement.classList.add('img-placeholder')"/>
+            <div class="img-placeholder-label">Bio portrait</div>
+          </div>
+          <div class="bio-quote">
+            "Imigongo is not decoration — it is memory written on walls."
+          </div>
+        </div>
+        <div class="bio-text">
+          <h2>Ruganintwali<br/>Patrick</h2>
+          <p class="bio-location">Kirehe, Rwanda</p>
+          <p>
+            Ruganintwali Patrick is one of Rwanda's foremost practitioners of
+            <strong>Imigongo</strong> — the ancient geometric art born in the
+            Gisaka kingdom over three centuries ago. Raised near Nyakarimbi,
+            the heartland of Imigongo, Patrick learnt the craft from his
+            grandmother, understanding early that every coil, every zigzag,
+            every concentric diamond carries cultural weight.
+          </p>
+          <p>
+            Working with cow dung, volcanic clay, and natural pigments —
+            black from charcoal, white from kaolin, red and brown from
+            earth — Patrick creates pieces that feel both prehistoric and
+            strikingly modern. His work has been shown in galleries across
+            Rwanda, Uganda, Kenya, and France.
+          </p>
+          <p>
+            Beyond creating, Patrick runs workshops for young Rwandans,
+            ensuring the knowledge does not disappear. For him, each piece
+            is an act of preservation as much as expression.
+          </p>
+          <div class="bio-stats">
+            <div class="stat">
+              <span class="stat-num">20+</span>
+              <span class="stat-label">Years of practice</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">300+</span>
+              <span class="stat-label">Pieces created</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">12</span>
+              <span class="stat-label">Countries exhibited</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELECTED WORKS ===================== -->
+  <section id="works">
+    <div class="section-inner">
+      <div class="section-label">Selected Works</div>
+      <h2 class="section-title">Pieces That Define a Practice</h2>
+
+      <!-- Work 1 — image left -->
+      <div class="work-item">
+        <div class="work-img-wrap">
+          <img src="images/work-1.jpg" alt="Umugabiro w'Inzira"
+               onerror="this.parentElement.classList.add('img-placeholder')"/>
+          <div class="img-placeholder-label">Work 1 — replace with real image</div>
+        </div>
+        <div class="work-desc">
+          <span class="work-num">01</span>
+          <h3>Umugabiro w'Inzira</h3>
+          <p class="work-year">2021 · Mixed natural pigments on board</p>
+          <p>
+            A large-format spiral composition inspired by the winding paths of
+            the Akagera River. The piece uses seven nested coils, each
+            representing a generation of the Gisaka kingdom's rulers. The deep
+            ochre tones were sourced from Bugesera volcanic soil.
+          </p>
+          <a href="work.html" class="work-link">See full collection →</a>
+        </div>
+      </div>
+
+      <!-- Work 2 — image right -->
+      <div class="work-item reverse">
+        <div class="work-img-wrap">
+          <img src="images/work-2.jpg" alt="Ikirere cy'Amahoro"
+               onerror="this.parentElement.classList.add('img-placeholder')"/>
+          <div class="img-placeholder-label">Work 2 — replace with real image</div>
+        </div>
+        <div class="work-desc">
+          <span class="work-num">02</span>
+          <h3>Ikirere cy'Amahoro</h3>
+          <p class="work-year">2022 · Cow dung &amp; kaolin on board</p>
+          <p>
+            "The Sky of Peace." Created during a residency following the
+            commemoration season, this piece uses only black and white — the
+            most traditional Imigongo palette — to speak about silence,
+            remembrance, and resilience. The repeating diamond grid is an old
+            symbol of protection.
+          </p>
+          <a href="work.html" class="work-link">See full collection →</a>
+        </div>
+      </div>
+
+      <!-- Work 3 — image left -->
+      <div class="work-item">
+        <div class="work-img-wrap">
+          <img src="images/work-3.jpg" alt="Inzira y'Ejo"
+               onerror="this.parentElement.classList.add('img-placeholder')"/>
+          <div class="img-placeholder-label">Work 3 — replace with real image</div>
+        </div>
+        <div class="work-desc">
+          <span class="work-num">03</span>
+          <h3>Inzira y'Ejo</h3>
+          <p class="work-year">2023 · Natural pigments, large-scale triptych</p>
+          <p>
+            "The Road of Tomorrow." A triptych commission for the Kigali
+            Convention Centre, measuring 3 × 1.5 metres each panel.
+            Patrick fused traditional Imigongo coil patterns with bold
+            triangular forms reflecting Rwanda's architectural growth —
+            the ancient in conversation with the new.
+          </p>
+          <a href="work.html" class="work-link">See full collection →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO ===================== -->
+  <section id="video-section">
+    <div class="video-inner">
+      <div class="section-label">Film</div>
+      <div class="video-frame">
+        <!-- Replace this div with a <video> tag or <iframe> embed when ready -->
+        <div class="video-placeholder-content">
+          <div class="video-play-btn" aria-label="Play video">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+              <polygon points="5,3 19,12 5,21"/>
+            </svg>
+          </div>
+          <p class="video-label-text">Patrick at work — documentary</p>
+          <p class="video-hint">Drop your video file or embed URL here</p>
+        </div>
+        <!-- Example swap:
+        <video controls poster="images/video-poster.jpg">
+          <source src="videos/patrick-documentary.mp4" type="video/mp4"/>
+        </video>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-row">
+        <a href="index.html" class="footer-logo">RP</a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="exhibition.html">Exhibitions</a>
+          <a href="work.html">Work</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-right">
+          <a href="mailto:hello@ruganintwali.art" class="footer-email">hello@ruganintwali.art</a>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Ruganintwali Patrick. All rights reserved.</span>
+        <span>Kirehe, Rwanda · Imigongo</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

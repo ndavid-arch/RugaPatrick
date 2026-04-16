@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Ruganintwali Patrick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-work">
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div id="loader-patterns"></div>
+    <div id="loader-center">
+      <div id="loader-name"><span>W</span><span>o</span><span>r</span><span>k</span></div>
+      <div id="loader-sub">All Pieces</div>
+    </div>
+  </div>
+
+  <div id="bg-patterns" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">RP</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="exhibition.html">Exhibition</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section id="page-hero">
+    <div class="page-hero-inner">
+      <p class="slide-eyebrow">Catalogue</p>
+      <h1>The<br/><em>Work</em></h1>
+      <p class="page-hero-sub">
+        Every piece created by hand using cow dung, volcanic clay,
+        and natural earth pigments. Click any piece to view it fully
+        and enquire about purchasing.
+      </p>
+    </div>
+    <div class="page-hero-pattern" aria-hidden="true"></div>
+  </section>
+
+  <!-- FILTER -->
+  <section id="filter-bar">
+    <div class="section-inner">
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="traditional">Traditional</button>
+        <button class="filter-btn" data-filter="contemporary">Contemporary</button>
+        <button class="filter-btn" data-filter="commission">Commission</button>
+        <button class="filter-btn" data-filter="available">Available</button>
+        <button class="filter-btn" data-filter="sold">Sold</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK GRID -->
+  <section id="work-catalogue">
+    <div class="section-inner">
+      <div class="work-grid">
+
+        <!-- Each card has data attributes used by the modal -->
+
+        <article class="wcard" data-category="traditional" data-status="available"
+          data-title="Umugabiro w'Inzira"
+          data-year="2021"
+          data-medium="Cow dung, kaolin &amp; charcoal on board"
+          data-dims="60 × 60 cm"
+          data-price="$850"
+          data-desc="A large spiral composition inspired by the winding paths of the Akagera River. Seven nested coils each represent a generation of the Gisaka kingdom's rulers. The deep ochre tones were sourced from Bugesera volcanic soil — every ring slightly different as the earth itself is never uniform."
+          data-img="images/work-1.jpg">
+          <div class="wcard-img">
+            <img src="images/work-1.jpg" alt="Umugabiro w'Inzira" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Umugabiro w'Inzira</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Umugabiro w'Inzira</h3>
+            <p class="wcard-meta">2021 · Traditional · 60 × 60 cm</p>
+            <p class="wcard-excerpt">A spiral composition inspired by the Akagera River, each coil representing a generation of the Gisaka kingdom.</p>
+            <span class="wcard-price">$850</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="traditional" data-status="available"
+          data-title="Ikirere cy'Amahoro"
+          data-year="2022"
+          data-medium="Cow dung &amp; kaolin on board"
+          data-dims="80 × 80 cm"
+          data-price="$1,200"
+          data-desc="'The Sky of Peace.' Created during a residency following the commemoration season, this piece uses only black and white — the most traditional Imigongo palette — to speak about silence, remembrance, and resilience. The repeating diamond grid is an ancient symbol of protection used by Gisaka royalty."
+          data-img="images/work-2.jpg">
+          <div class="wcard-img">
+            <img src="images/work-2.jpg" alt="Ikirere cy'Amahoro" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Ikirere cy'Amahoro</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Ikirere cy'Amahoro</h3>
+            <p class="wcard-meta">2022 · Traditional · 80 × 80 cm</p>
+            <p class="wcard-excerpt">Black and white diamonds speaking about silence, remembrance, and resilience.</p>
+            <span class="wcard-price">$1,200</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="commission" data-status="sold"
+          data-title="Inzira y'Ejo — Triptych"
+          data-year="2023"
+          data-medium="Natural pigments on board, 3 panels"
+          data-dims="3 × (100 × 150 cm)"
+          data-price="Sold"
+          data-desc="'The Road of Tomorrow.' A triptych commission for the Kigali Convention Centre, measuring 3 × 1.5 metres each panel. Patrick fused traditional Imigongo coil patterns with bold triangular forms reflecting Rwanda's architectural growth — the ancient in conversation with the new. Now permanently installed in the main atrium."
+          data-img="images/work-3.jpg">
+          <div class="wcard-img">
+            <img src="images/work-3.jpg" alt="Inzira y'Ejo" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Inzira y'Ejo — Triptych</div>
+            <div class="wcard-overlay"><span>View</span></div>
+            <div class="wcard-status sold">Sold</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Inzira y'Ejo — Triptych</h3>
+            <p class="wcard-meta">2023 · Commission · 3 panels</p>
+            <p class="wcard-excerpt">Monumental triptych permanently installed at the Kigali Convention Centre.</p>
+            <span class="wcard-price sold-label">Sold</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="contemporary" data-status="available"
+          data-title="Amazi Menshi"
+          data-year="2023"
+          data-medium="Earth pigments &amp; cow dung on canvas"
+          data-dims="70 × 90 cm"
+          data-price="$980"
+          data-desc="'Many Waters.' Flowing zigzag lines in alternating black and deep ochre suggest rivers and tributaries as seen from above. This piece departs from the rigid geometry of classical Imigongo, allowing the lines to breathe and curve slightly — a contemporary take that remains deeply rooted in the vocabulary of the craft."
+          data-img="images/work-4.jpg">
+          <div class="wcard-img">
+            <img src="images/work-4.jpg" alt="Amazi Menshi" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Amazi Menshi</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Amazi Menshi</h3>
+            <p class="wcard-meta">2023 · Contemporary · 70 × 90 cm</p>
+            <p class="wcard-excerpt">Flowing zigzag lines suggesting rivers and tributaries as seen from above.</p>
+            <span class="wcard-price">$980</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="contemporary" data-status="sold"
+          data-title="Ubumwe"
+          data-year="2022"
+          data-medium="Kaolin, charcoal &amp; earth on board"
+          data-dims="50 × 50 cm"
+          data-price="Sold"
+          data-desc="'Unity.' Four concentric squares rotate by 45° at each ring, creating a dynamic optical effect that resembles a vortex of togetherness. This was Patrick's first piece to explore the tension between stillness and movement within a single static composition."
+          data-img="images/work-5.jpg">
+          <div class="wcard-img">
+            <img src="images/work-5.jpg" alt="Ubumwe" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Ubumwe</div>
+            <div class="wcard-overlay"><span>View</span></div>
+            <div class="wcard-status sold">Sold</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Ubumwe</h3>
+            <p class="wcard-meta">2022 · Contemporary · 50 × 50 cm</p>
+            <p class="wcard-excerpt">Four concentric squares rotating 45° at each ring — stillness and movement as one.</p>
+            <span class="wcard-price sold-label">Sold</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="traditional" data-status="available"
+          data-title="Isoko y'Ubuzima"
+          data-year="2020"
+          data-medium="Cow dung &amp; natural pigments on board"
+          data-dims="55 × 55 cm"
+          data-price="$650"
+          data-desc="'Source of Life.' One of Patrick's earlier mature pieces, this work draws directly from the oldest Imigongo motifs documented in Nyakarimbi. The cross within a diamond within a square is a recurring symbol in the Gisaka royal household, representing the four seasons and the cycle of abundance."
+          data-img="images/work-6.jpg">
+          <div class="wcard-img">
+            <img src="images/work-6.jpg" alt="Isoko y'Ubuzima" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Isoko y'Ubuzima</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Isoko y'Ubuzima</h3>
+            <p class="wcard-meta">2020 · Traditional · 55 × 55 cm</p>
+            <p class="wcard-excerpt">Cross within diamond within square — a Gisaka royal motif representing the four seasons.</p>
+            <span class="wcard-price">$650</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="commission" data-status="available"
+          data-title="Iterambere"
+          data-year="2024"
+          data-medium="Earth pigments on board"
+          data-dims="90 × 120 cm"
+          data-price="$1,100"
+          data-desc="'Development / Progress.' Commissioned as a housewarming gift for a private collector in Kigali, this vertical format piece builds upward — each geometric band more complex than the last, symbolising growth layer upon layer. The warm terracotta palette reflects the brick and clay of Rwandan architecture."
+          data-img="images/work-7.jpg">
+          <div class="wcard-img">
+            <img src="images/work-7.jpg" alt="Iterambere" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Iterambere</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Iterambere</h3>
+            <p class="wcard-meta">2024 · Commission · 90 × 120 cm</p>
+            <p class="wcard-excerpt">Bands of increasing complexity, each layer symbolising growth upon growth.</p>
+            <span class="wcard-price">$1,100</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="contemporary" data-status="available"
+          data-title="Inkuru y'Abantu"
+          data-year="2024"
+          data-medium="Cow dung, kaolin &amp; iron oxide on board"
+          data-dims="75 × 75 cm"
+          data-price="$890"
+          data-desc="'The Story of People.' A grid of 16 small Imigongo panels unified into one large composition — each sub-panel uses a different traditional motif, yet together they form a coherent whole. The piece is Patrick's meditation on community: individual voices creating a collective story."
+          data-img="images/work-8.jpg">
+          <div class="wcard-img">
+            <img src="images/work-8.jpg" alt="Inkuru y'Abantu" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Inkuru y'Abantu</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Inkuru y'Abantu</h3>
+            <p class="wcard-meta">2024 · Contemporary · 75 × 75 cm</p>
+            <p class="wcard-excerpt">16 individual motifs unified into one — individual voices forming a collective story.</p>
+            <span class="wcard-price">$890</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="traditional" data-status="available"
+          data-title="Urukundo"
+          data-year="2021"
+          data-medium="Cow dung &amp; kaolin on board"
+          data-dims="45 × 45 cm"
+          data-price="$720"
+          data-desc="'Love.' A classic two-colour Imigongo piece in the strictest traditional form — no earth tones, only the pure contrast of black charcoal and white kaolin. The interlocking diamond pattern was traditionally given as a gift between families during ceremonies. Small enough to carry, intimate enough to keep."
+          data-img="images/work-9.jpg">
+          <div class="wcard-img">
+            <img src="images/work-9.jpg" alt="Urukundo" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Urukundo</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Urukundo</h3>
+            <p class="wcard-meta">2021 · Traditional · 45 × 45 cm</p>
+            <p class="wcard-excerpt">Interlocking diamonds in pure black and white — traditionally given as a ceremonial gift.</p>
+            <span class="wcard-price">$720</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="contemporary" data-status="available"
+          data-title="Inyabutatu"
+          data-year="2022"
+          data-medium="Earth pigments on board"
+          data-dims="65 × 65 cm"
+          data-price="$680"
+          data-desc="'The Triangle.' An exploration of a motif rarely centred in classical Imigongo — the triangle — as primary form. Three concentric triangles in ochre, red-brown, and black build inward to a single point of convergence. The work explores how ancient geometry can feel radical when isolated and amplified."
+          data-img="images/work-10.jpg">
+          <div class="wcard-img">
+            <img src="images/work-10.jpg" alt="Inyabutatu" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Inyabutatu</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Inyabutatu</h3>
+            <p class="wcard-meta">2022 · Contemporary · 65 × 65 cm</p>
+            <p class="wcard-excerpt">Three concentric triangles converging to a single point — ancient geometry made radical.</p>
+            <span class="wcard-price">$680</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="traditional" data-status="sold"
+          data-title="Impano"
+          data-year="2023"
+          data-medium="Cow dung, kaolin &amp; red clay on board"
+          data-dims="60 × 60 cm"
+          data-price="Sold"
+          data-desc="'The Gift.' A warm three-tone piece — red clay, kaolin white, and charcoal black — arranged in a spiral that expands from the centre outward. The title reflects both the act of giving and the idea that mastery of a traditional craft is itself a gift passed from one generation to the next."
+          data-img="images/work-11.jpg">
+          <div class="wcard-img">
+            <img src="images/work-11.jpg" alt="Impano" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Impano</div>
+            <div class="wcard-overlay"><span>View</span></div>
+            <div class="wcard-status sold">Sold</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Impano</h3>
+            <p class="wcard-meta">2023 · Traditional · 60 × 60 cm</p>
+            <p class="wcard-excerpt">A spiral expanding outward — mastery as a gift passed between generations.</p>
+            <span class="wcard-price sold-label">Sold</span>
+          </div>
+        </article>
+
+        <article class="wcard" data-category="traditional" data-status="available"
+          data-title="Inkomoko"
+          data-year="2024"
+          data-medium="Natural pigments &amp; cow dung on board"
+          data-dims="70 × 70 cm"
+          data-price="$950"
+          data-desc="'The Origin.' Patrick's most recent traditional piece and one of his most restrained. A single large coil on a plain black ground — the spiral emerging from the centre as if drawn from memory, from muscle, from somewhere before thought. A meditation on where this art form comes from and where it is going."
+          data-img="images/work-12.jpg">
+          <div class="wcard-img">
+            <img src="images/work-12.jpg" alt="Inkomoko" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Inkomoko</div>
+            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <div class="wcard-status available">Available</div>
+          </div>
+          <div class="wcard-info">
+            <h3>Inkomoko</h3>
+            <p class="wcard-meta">2024 · Traditional · 70 × 70 cm</p>
+            <p class="wcard-excerpt">A single coil on black ground — a meditation on origin, memory, and where this art is going.</p>
+            <span class="wcard-price">$950</span>
+          </div>
+        </article>
+
+      </div><!-- .work-grid -->
+    </div>
+  </section>
+
+  <!-- PIECE MODAL -->
+  <div id="piece-modal" class="piece-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-body">
+        <div class="modal-img-side">
+          <img id="modal-img" src="" alt="" />
+          <div class="modal-img-placeholder"></div>
+        </div>
+        <div class="modal-info-side">
+          <p class="slide-eyebrow" id="modal-meta"></p>
+          <h2 id="modal-title"></h2>
+          <p class="modal-dims" id="modal-dims"></p>
+          <p class="modal-desc" id="modal-desc"></p>
+          <div class="modal-footer">
+            <div class="modal-price-wrap">
+              <span class="modal-price-label">Price</span>
+              <span class="modal-price" id="modal-price"></span>
+            </div>
+            <div class="modal-actions" id="modal-actions"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-row">
+        <a href="index.html" class="footer-logo">RP</a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="exhibition.html">Exhibition</a>
+          <a href="work.html">Work</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-right">
+          <a href="mailto:hello@ruganintwali.art" class="footer-email">hello@ruganintwali.art</a>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Ruganintwali Patrick. All rights reserved.</span>
+        <span>Kirehe, Rwanda · Imigongo</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

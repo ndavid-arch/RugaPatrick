@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibition — Ruganintwali Patrick</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-exhibition">
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div id="loader-patterns"></div>
+    <div id="loader-center">
+      <div id="loader-name">
+        <span>E</span><span>x</span><span>h</span><span>i</span><span>b</span><span>i</span><span>t</span><span>i</span><span>o</span><span>n</span>
+      </div>
+      <div id="loader-sub">Shows &amp; History</div>
+    </div>
+  </div>
+
+  <div id="bg-patterns" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">RP</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="exhibition.html" class="active">Exhibition</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section id="page-hero">
+    <div class="page-hero-inner">
+      <p class="slide-eyebrow">Shows &amp; History</p>
+      <h1>Exhibition</h1>
+      <p class="page-hero-sub">
+        From village galleries in Kirehe to international art fairs —
+        a record of where Imigongo has travelled.
+      </p>
+    </div>
+    <div class="page-hero-pattern" aria-hidden="true"></div>
+  </section>
+
+  <!-- FEATURED SHOWS (image cards) -->
+  <section id="featured-shows">
+    <div class="section-inner">
+      <div class="section-label">Featured</div>
+      <h2 class="section-title">Recent Exhibitions</h2>
+      <div class="show-cards">
+
+        <div class="show-card reveal">
+          <div class="show-img">
+            <img src="images/exhibit-kigali.jpg" alt="Kigali Art Week 2024"
+              onerror="this.parentElement.classList.add('img-placeholder')"/>
+            <div class="img-placeholder-label">Kigali Art Week 2024</div>
+          </div>
+          <div class="show-card-body">
+            <span class="show-year">2024</span>
+            <h3>Inzira — Paths &amp; Patterns</h3>
+            <p class="show-venue">Kigali Art Week · Solo Show · Kigali, Rwanda</p>
+            <p>First major solo exhibition. Forty pieces spanning fifteen years of practice, tracing Patrick's evolution from strict traditionalism into more contemplative territory.</p>
+          </div>
+        </div>
+
+        <div class="show-card reveal">
+          <div class="show-img">
+            <img src="images/exhibit-paris.jpg" alt="Art Paris 2023"
+              onerror="this.parentElement.classList.add('img-placeholder')"/>
+            <div class="img-placeholder-label">Art Paris 2023</div>
+          </div>
+          <div class="show-card-body">
+            <span class="show-year">2023</span>
+            <h3>Living Craft — East African Traditions</h3>
+            <p class="show-venue">Art Paris · Grand Palais Éphémère · Paris, France</p>
+            <p>Group show alongside five East African artists. Patrick's pieces sold out within the first two days. Featured in Le Monde's arts section.</p>
+          </div>
+        </div>
+
+        <div class="show-card reveal">
+          <div class="show-img">
+            <img src="images/exhibit-kampala.jpg" alt="Kampala Art Biennale 2022"
+              onerror="this.parentElement.classList.add('img-placeholder')"/>
+            <div class="img-placeholder-label">Kampala Art Biennale 2022</div>
+          </div>
+          <div class="show-card-body">
+            <span class="show-year">2022</span>
+            <h3>Heritage Dialogues</h3>
+            <p class="show-venue">Kampala Art Biennale · Kampala, Uganda</p>
+            <p>Presented <em>Ikirere cy'Amahoro</em> and two smaller works. Awarded the Craft Excellence recognition by the biennale jury.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <div class="section-inner">
+      <div class="section-label">Full History</div>
+      <h2 class="section-title">Exhibition Timeline</h2>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-body">
+            <h4>Kigali Art Week — Solo Show</h4>
+            <p>Kigali, Rwanda · <em>Inzira — Paths &amp; Patterns</em></p>
+            <p>First major solo exhibition, 40 pieces, 15 years of practice.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-body">
+            <h4>Rwanda Arts Council — Residency Show</h4>
+            <p>Kigali, Rwanda · Group exhibition</p>
+            <p>Presented three new works exploring contemporary Rwandan identity through Imigongo.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-body">
+            <h4>Art Paris</h4>
+            <p>Grand Palais Éphémère, Paris, France</p>
+            <p>Featured in a group show on living East African craft traditions. Covered by Le Monde.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-body">
+            <h4>Kigali Convention Centre — Public Commission</h4>
+            <p>Kigali, Rwanda · Permanent installation</p>
+            <p>Triptych <em>Inzira y'Ejo</em> installed in the main atrium — 9 square metres of Imigongo.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-body">
+            <h4>Kampala Art Biennale</h4>
+            <p>Kampala, Uganda</p>
+            <p>Awarded the Craft Excellence recognition. <em>Ikirere cy'Amahoro</em> acquired by a private collector.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-body">
+            <h4>Nairobi Gallery of Modern Art</h4>
+            <p>Nairobi, Kenya · Two-artist show</p>
+            <p>Presented eight traditional pieces alongside Kenyan textile artist Achieng' Otieno.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-body">
+            <h4>Nairobi Design Week</h4>
+            <p>Nairobi, Kenya · Heritage Craft Pavilion</p>
+            <p>Live Imigongo demonstrations drew significant international press attention.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-body">
+            <h4>Nyakarimbi Cultural Centre</h4>
+            <p>Kirehe, Rwanda · Annual group show</p>
+            <p>Community exhibition featuring ten Kirehe-based artists. Patrick's work sold out.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2019</div>
+          <div class="timeline-body">
+            <h4>Rwanda Cultural Festival</h4>
+            <p>Musanze, Rwanda · National showcase</p>
+            <p>Represented the Kirehe district. Won the national Imigongo craftsmanship award.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-year">2017</div>
+          <div class="timeline-body">
+            <h4>Kigali up! Art Fair</h4>
+            <p>Kigali, Rwanda · First major group exhibition</p>
+            <p>Patrick's first appearance at a commercial art fair. Sold six pieces, received first commission.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMISSION CTA -->
+  <section id="commission-cta">
+    <div class="cta-inner">
+      <div class="cta-pattern" aria-hidden="true"></div>
+      <div class="cta-text">
+        <h2>Bring Imigongo<br/>to Your Space</h2>
+        <p>
+          Patrick accepts commissions for private collections, interior projects,
+          and public installations anywhere in the world. Every piece is made
+          by hand with traditional materials.
+        </p>
+        <div class="cta-btn-group">
+          <a href="work.html" class="cta-btn outline">Browse available work</a>
+          <a href="contact.html" class="cta-btn">Start a commission</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-row">
+        <a href="index.html" class="footer-logo">RP</a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="exhibition.html">Exhibition</a>
+          <a href="work.html">Work</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-right">
+          <a href="mailto:hello@ruganintwali.art" class="footer-email">hello@ruganintwali.art</a>
+          <div class="footer-socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Ruganintwali Patrick. All rights reserved.</span>
+        <span>Kirehe, Rwanda · Imigongo</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
