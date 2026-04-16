@@ -3,7 +3,7 @@
    Loader · Background patterns · Slideshow · Custom cursor
    ============================================================ */
 
-/* ---------- Imigongo SVG patterns ---------- */
+/* ---------- SVG patterns ---------- */
 const PATTERNS = [
   // 1 — Square spiral (coil)
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">

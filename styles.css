@@ -1,5 +1,5 @@
 /* ============================================================
-   RUGANINTWALI PATRICK — IMIGONGO ARTIST
+  RUGANINTWALI PATRICK — ARTIST
    styles.css
    ============================================================ */
 
@@ -891,7 +891,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   gap: 1rem;
   background: linear-gradient(135deg, #1c1410 0%, #2e2018 50%, #1a1410 100%);
-  /* Subtle imigongo texture overlay */
+  /* Subtle texture overlay */
   background-size: cover;
 }
 .video-play-btn {
