@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check all required files exist
+        run: |
+          echo "── Checking required files ──"
+          MISSING=0
+          for f in index.html exhibition.html work.html contact.html styles.css script.js; do
+            if [ -f "$f" ]; then
+              echo "  ✓  $f"
+            else
+              echo "  ✗  $f  ← MISSING"
+              MISSING=1
+            fi
+          done
+          if [ $MISSING -eq 1 ]; then
+            echo "One or more required files are missing."
+            exit 1
+          fi
+          echo "All files present."
+
+      - name: Check HTML files are non-empty
+        run: |
+          for f in index.html exhibition.html work.html contact.html; do
+            LINES=$(wc -l < "$f")
+            if [ "$LINES" -lt 10 ]; then
+              echo "✗ $f looks empty or corrupt ($LINES lines)"
+              exit 1
+            fi
+            echo "✓ $f ($LINES lines)"
+          done

@@ -116,10 +116,11 @@ const PATTERNS = [
   if (loaderSub) setTimeout(() => loaderSub.classList.add('show'), 400 + letters.length * 60 + 200);
 
   // Hide loader after animation
-  const totalMs = 400 + letters.length * 60 + 800;
-  setTimeout(() => {
-    loader.classList.add('hidden');
-  }, Math.max(totalMs, 2200));
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      loader.classList.add('hidden');
+    }, 5000);
+  });
 })();
 
 /* ---------- Background Patterns — floating + cursor repulsion ---------- */
