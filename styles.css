@@ -975,6 +975,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: border-color 0.2s, color 0.2s;
 }
 .footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-socials a svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
 .footer-bottom {
   display: flex;
   justify-content: space-between;
