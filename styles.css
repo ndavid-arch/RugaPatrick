@@ -1050,7 +1050,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .footer-bottom {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  text-align: center;
   font-size: 0.7rem;
   color: rgba(245,241,234,0.28);
 }

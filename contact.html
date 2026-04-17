@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Ruganintwali Patrick</title>
+  <title>Ruganintwali Patrick</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8E%A8%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="Get in touch with Ruganintwali Patrick for commissions, exhibitions, workshops, and general enquiries." />
+  <meta property="og:title" content="Contact — Ruganintwali Patrick" />
+  <meta property="og:description" content="Contact Ruganintwali Patrick for commissions, workshops, and exhibition enquiries." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -22,26 +28,8 @@
 
   <div id="bg-patterns" aria-hidden="true"></div>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <a href="index.html" class="nav-logo">RP</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="exhibition.html">Exhibition</a></li>
-      <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Work</button>
-        <ul class="nav-dropdown-menu">
-          <li><a href="work.html?view=sculpture">Sculpture</a></li>
-          <li><a href="work.html?view=painting">Painting</a></li>
-          <li><a href="work.html?view=settings">Settings</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-    <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <!-- NAV (shared from index.html) -->
+  <div id="shared-nav"></div>
 
   <!-- CONTACT BODY -->
   <section id="contact-section">
@@ -169,41 +157,8 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="footer">
-    <div class="footer-inner">
-      <div class="footer-row">
-        <a href="index.html" class="footer-logo">RP</a>
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="index.html">Home</a>
-          <a href="exhibition.html">Exhibition</a>
-          <a href="work.html">Work</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-        <div class="footer-right">
-          <a href="mailto:hello@ruganintwali.art" class="footer-email">hello@ruganintwali.art</a>
-          <div class="footer-socials">
-            <a href="#" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="15" height="15" aria-hidden="true" focusable="false">
-                <rect x="3" y="3" width="18" height="18" rx="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-              </svg>
-            </a>
-            <a href="#" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true" focusable="false">
-                <path d="M14 8h3V4h-3c-3.2 0-5 1.9-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.8.2-1 1-1z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2024 Ruganintwali Patrick. All rights reserved.</span>
-        <span>Kirehe, Rwanda</span>
-      </div>
-    </div>
-  </footer>
+  <!-- FOOTER (shared from index.html) -->
+  <div id="shared-footer"></div>
 
   <script src="script.js"></script>
 </body>

@@ -149,12 +149,12 @@ const PATTERNS = [
   if (!img) return;
 
   const sculptureImages = [
-    'assets/sculpture/image 1.jpeg',
-    'assets/sculpture/image 2.jpeg',
-    'assets/sculpture/image 3.jpeg',
-    'assets/sculpture/image 4.jpeg',
-    'assets/sculpture/image 5.jpeg',
-    'assets/sculpture/image 6.jpeg',
+    'assets/sculpture/sculpture-1.jpeg',
+    'assets/sculpture/sculpture-2.jpeg',
+    'assets/sculpture/sculpture-3.jpeg',
+    'assets/sculpture/sculpture-4.jpeg',
+    'assets/sculpture/sculpture-5.jpeg',
+    'assets/sculpture/sculpture-6.jpeg',
   ];
 
   let index = 0;
@@ -313,13 +313,14 @@ const PATTERNS = [
   })();
 })();
 
-/* ---------- Navbar scroll ---------- */
-(function initNavbar() {
+/* ---------- Navbar Binding ---------- */
+function bindNavbar() {
   const nav    = document.getElementById('navbar');
   const burger = document.getElementById('navBurger');
   const links  = document.querySelector('.nav-links');
   const dropdowns = document.querySelectorAll('.nav-dropdown');
-  if (!nav) return;
+  if (!nav || nav.dataset.bound === '1') return;
+  nav.dataset.bound = '1';
 
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -369,6 +370,57 @@ const PATTERNS = [
       if (itemToggle) itemToggle.setAttribute('aria-expanded', 'false');
     });
   });
+}
+
+/* ---------- Shared Layout (non-home pages) ---------- */
+(function initSharedLayout() {
+  const path = window.location.pathname;
+  const page = path.split('/').pop() || 'index.html';
+  const isIndexPage = page === '' || page === 'index.html';
+
+  if (isIndexPage) {
+    bindNavbar();
+    return;
+  }
+
+  const navMount = document.getElementById('shared-nav');
+  const footerMount = document.getElementById('shared-footer');
+  if (!navMount || !footerMount) {
+    bindNavbar();
+    return;
+  }
+
+  fetch('index.html')
+    .then(res => res.text())
+    .then(html => {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const sourceNav = doc.getElementById('navbar');
+      const sourceFooter = doc.getElementById('footer');
+      if (!sourceNav || !sourceFooter) {
+        bindNavbar();
+        return;
+      }
+
+      const navClone = sourceNav.cloneNode(true);
+      const footerClone = sourceFooter.cloneNode(true);
+
+      navClone.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+
+      const activeLink = navClone.querySelector(`.nav-links a[href="${page}"]`);
+      if (activeLink) activeLink.classList.add('active');
+
+      const workToggle = navClone.querySelector('.nav-dropdown-toggle');
+      if (page === 'work.html' && workToggle) workToggle.classList.add('active');
+
+      navMount.replaceWith(navClone);
+      footerMount.replaceWith(footerClone);
+      bindNavbar();
+    })
+    .catch(() => {
+      bindNavbar();
+    });
 })();
 
 /* ---------- Hero Slideshow ---------- */
