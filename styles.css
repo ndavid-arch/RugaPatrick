@@ -1119,19 +1119,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0.5rem 1.4rem;
 }
 
-.wcard-status {
-  position: absolute;
-  top: 0.8rem; left: 0.8rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 1px;
-  font-weight: 500;
-}
-.wcard-status.available { background: var(--red); color: var(--white); }
-.wcard-status.sold      { background: var(--ink); color: rgba(255,255,255,0.55); }
-
 .wcard-info {
   padding: 1rem 0 0.5rem;
   flex: 1;

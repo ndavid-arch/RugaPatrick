@@ -599,17 +599,18 @@ const PATTERNS = [
 (function initWorkFilter() {
   const btns  = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.wcard');
-  if (!btns.length || !cards.length) return;
+  if (!cards.length) return;
 
   function applyFilter(filterValue) {
     const targetBtn = Array.from(btns).find(btn => btn.dataset.filter === filterValue)
       || Array.from(btns).find(btn => btn.dataset.filter === 'all');
-    if (!targetBtn) return;
+    const f = targetBtn ? targetBtn.dataset.filter : (filterValue || 'all');
 
-    btns.forEach(b => b.classList.remove('active'));
-    targetBtn.classList.add('active');
+    if (targetBtn) {
+      btns.forEach(b => b.classList.remove('active'));
+      targetBtn.classList.add('active');
+    }
 
-    const f = targetBtn.dataset.filter;
     cards.forEach(card => {
       const catMatch    = f === 'all' || card.dataset.category === f;
       const statusMatch = f === 'all' || f === 'available' || f === 'sold'
@@ -620,11 +621,13 @@ const PATTERNS = [
     });
   }
 
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      applyFilter(btn.dataset.filter);
+  if (btns.length) {
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyFilter(btn.dataset.filter);
+      });
     });
-  });
+  }
 
   const view = new URLSearchParams(window.location.search).get('view');
   const heroEyebrow = document.querySelector('#page-hero .slide-eyebrow');
