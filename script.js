@@ -143,6 +143,66 @@ const PATTERNS = [
   });
 })();
 
+/* ---------- Home Sculpture Rotator ---------- */
+(function initHomeSculptureRotator() {
+  const img = document.getElementById('home-sculpture-rotator');
+  if (!img) return;
+
+  const sculptureImages = [
+    'assets/sculpture/image 1.jpeg',
+    'assets/sculpture/image 2.jpeg',
+    'assets/sculpture/image 3.jpeg',
+    'assets/sculpture/image 4.jpeg',
+    'assets/sculpture/image 5.jpeg',
+    'assets/sculpture/image 6.jpeg',
+  ];
+
+  let index = 0;
+  let transitioning = false;
+  img.style.opacity = '1';
+  img.style.transition = 'opacity 0.55s ease';
+
+  const preloaded = new Set();
+  function preload(src) {
+    return new Promise(resolve => {
+      if (preloaded.has(src)) {
+        resolve(true);
+        return;
+      }
+      const preImg = new Image();
+      preImg.onload = () => {
+        preloaded.add(src);
+        resolve(true);
+      };
+      preImg.onerror = () => resolve(false);
+      preImg.src = src;
+    });
+  }
+
+  sculptureImages.forEach(src => { preload(src); });
+
+  setInterval(async () => {
+    if (transitioning) return;
+
+    const nextIndex = (index + 1) % sculptureImages.length;
+    const nextSrc = sculptureImages[nextIndex];
+    const ready = await preload(nextSrc);
+    if (!ready) return;
+
+    transitioning = true;
+    img.style.opacity = '0.22';
+
+    setTimeout(() => {
+      img.src = nextSrc;
+      index = nextIndex;
+      requestAnimationFrame(() => {
+        img.style.opacity = '1';
+        transitioning = false;
+      });
+    }, 260);
+  }, 3200);
+})();
+
 /* ---------- Background Patterns — floating + cursor repulsion ---------- */
 (function initBgPatterns() {
   const container = document.getElementById('bg-patterns');
@@ -461,7 +521,6 @@ const PATTERNS = [
   const titleEl   = document.getElementById('modal-title');
   const dimsEl    = document.getElementById('modal-dims');
   const descEl    = document.getElementById('modal-desc');
-  const priceEl   = document.getElementById('modal-price');
   const actionsEl = document.getElementById('modal-actions');
   const imgSide   = document.querySelector('.modal-img-side');
 
@@ -473,14 +532,6 @@ const PATTERNS = [
     titleEl.textContent = d.title;
     dimsEl.textContent  = d.dims;
     descEl.textContent  = d.desc;
-
-    if (isSold) {
-      priceEl.textContent = 'Sold';
-      priceEl.className   = 'modal-price sold';
-    } else {
-      priceEl.textContent = d.price;
-      priceEl.className   = 'modal-price';
-    }
 
     /* Image */
     imgEl.src = d.img || '';
@@ -502,7 +553,7 @@ const PATTERNS = [
       buyBtn.addEventListener('click', () => {
         const subject = encodeURIComponent(`Buying: ${d.title}`);
         const body    = encodeURIComponent(
-          `Hello Patrick,\n\nI am interested in purchasing "${d.title}" (${d.year}, ${d.dims}).\n\nListed price: ${d.price}\n\nPlease let me know the next steps.\n\nBest regards,`
+          `Hello Patrick,\n\nI am interested in purchasing "${d.title}" (${d.year}, ${d.dims}).\n\nPlease let me know the next steps.\n\nBest regards,`
         );
         window.location.href = `mailto:hello@ruganintwali.art?subject=${subject}&body=${body}`;
       });

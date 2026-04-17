@@ -562,6 +562,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .work-item:hover .work-img-wrap img { transform: scale(1.04); }
 
+#sculpture .work-img-wrap {
+  background: #1f1813;
+}
+
 .work-desc { padding: 1rem 0; }
 .work-num {
   font-family: var(--font-serif);
