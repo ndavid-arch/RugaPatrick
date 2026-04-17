@@ -34,7 +34,14 @@
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="exhibition.html">Exhibitions</a></li>
-      <li><a href="work.html">Work</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Work</button>
+        <ul class="nav-dropdown-menu">
+          <li><a href="work.html?view=sculpture">Sculpture</a></li>
+          <li><a href="work.html?view=painting">Painting</a></li>
+          <li><a href="work.html?view=settings">Settings</a></li>
+        </ul>
+      </li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
@@ -155,10 +162,10 @@
   <section id="works">
     <div class="section-inner">
       <div class="section-label">Selected Works</div>
-      <h2 class="section-title">Pieces That Define a Practice</h2>
+      <h2 class="section-title">Pieces That Define my Practice</h2>
 
       <!-- Work 1 — image left -->
-      <div class="work-item">
+      <div class="work-item" id="sculpture">
         <div class="work-img-wrap">
           <img src="images/work-1.jpg" alt="Umugabiro w'Inzira"
                onerror="this.parentElement.classList.add('img-placeholder')"/>
@@ -166,8 +173,8 @@
         </div>
         <div class="work-desc">
           <span class="work-num">01</span>
-          <h3>Umugabiro w'Inzira</h3>
-          <p class="work-year">2021 · Mixed natural pigments on board</p>
+          <h3>Sculpture</h3>
+          <p class="work-year"> wood carving & crafting </p>
           <p>
             A large-format spiral composition inspired by the winding paths of
             the Akagera River. The piece uses seven nested coils, each
@@ -179,7 +186,7 @@
       </div>
 
       <!-- Work 2 — image right -->
-      <div class="work-item reverse">
+      <div class="work-item reverse" id="painting">
         <div class="work-img-wrap">
           <img src="images/work-2.jpg" alt="Ikirere cy'Amahoro"
                onerror="this.parentElement.classList.add('img-placeholder')"/>
@@ -187,8 +194,8 @@
         </div>
         <div class="work-desc">
           <span class="work-num">02</span>
-          <h3>Ikirere cy'Amahoro</h3>
-          <p class="work-year">2022 · Cow dung &amp; kaolin on board</p>
+          <h3>Painting</h3>
+          <p class="work-year"> Canvas Paintings</p>
           <p>
             "The Sky of Peace." Created during a residency following the
             commemoration season, this piece uses only black and white — the
@@ -201,7 +208,7 @@
       </div>
 
       <!-- Work 3 — image left -->
-      <div class="work-item">
+      <div class="work-item" id="settings">
         <div class="work-img-wrap">
           <img src="images/work-3.jpg" alt="Inzira y'Ejo"
                onerror="this.parentElement.classList.add('img-placeholder')"/>
@@ -209,8 +216,8 @@
         </div>
         <div class="work-desc">
           <span class="work-num">03</span>
-          <h3>Inzira y'Ejo</h3>
-          <p class="work-year">2023 · Natural pigments, large-scale triptych</p>
+          <h3>Settings</h3>
+          <p class="work-year"> Installation & settings</p>
           <p>
             "The Road of Tomorrow." A triptych commission for the Kigali
             Convention Centre, measuring 3 × 1.5 metres each panel. Patrick

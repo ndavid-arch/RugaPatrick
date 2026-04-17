@@ -82,6 +82,26 @@ const PATTERNS = [
   const loaderSub    = document.getElementById('loader-sub');
   if (!loader) return;
 
+  const pageKey = `rp-loader-seen:${window.location.pathname}`;
+  let hasSeenPageLoader = false;
+  try {
+    hasSeenPageLoader = localStorage.getItem(pageKey) === '1';
+  } catch (e) {
+    hasSeenPageLoader = false;
+  }
+
+  // Skip loader on repeat visits to the same page.
+  if (hasSeenPageLoader) {
+    loader.style.display = 'none';
+    return;
+  }
+
+  try {
+    localStorage.setItem(pageKey, '1');
+  } catch (e) {
+    // If storage is unavailable, keep default behavior.
+  }
+
   // Place random pattern tiles across the loader
   const TILE_COUNT = 14;
   const tiles = [];
@@ -238,6 +258,7 @@ const PATTERNS = [
   const nav    = document.getElementById('navbar');
   const burger = document.getElementById('navBurger');
   const links  = document.querySelector('.nav-links');
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
   if (!nav) return;
 
   window.addEventListener('scroll', () => {
@@ -249,6 +270,45 @@ const PATTERNS = [
       links.classList.toggle('open');
     });
   }
+
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      const isOpen = dropdown.classList.contains('open');
+
+      dropdowns.forEach(item => {
+        item.classList.remove('open');
+        const itemToggle = item.querySelector('.nav-dropdown-toggle');
+        if (itemToggle) itemToggle.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        dropdown.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (e.target.closest('.nav-dropdown')) return;
+    dropdowns.forEach(item => {
+      item.classList.remove('open');
+      const itemToggle = item.querySelector('.nav-dropdown-toggle');
+      if (itemToggle) itemToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    dropdowns.forEach(item => {
+      item.classList.remove('open');
+      const itemToggle = item.querySelector('.nav-dropdown-toggle');
+      if (itemToggle) itemToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 })();
 
 /* ---------- Hero Slideshow ---------- */
@@ -490,21 +550,68 @@ const PATTERNS = [
   const cards = document.querySelectorAll('.wcard');
   if (!btns.length || !cards.length) return;
 
+  function applyFilter(filterValue) {
+    const targetBtn = Array.from(btns).find(btn => btn.dataset.filter === filterValue)
+      || Array.from(btns).find(btn => btn.dataset.filter === 'all');
+    if (!targetBtn) return;
+
+    btns.forEach(b => b.classList.remove('active'));
+    targetBtn.classList.add('active');
+
+    const f = targetBtn.dataset.filter;
+    cards.forEach(card => {
+      const catMatch    = f === 'all' || card.dataset.category === f;
+      const statusMatch = f === 'all' || f === 'available' || f === 'sold'
+        ? (f === 'all' || card.dataset.status === f)
+        : true;
+      const show = f === 'available' || f === 'sold' ? statusMatch : catMatch;
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      cards.forEach(card => {
-        const catMatch    = f === 'all' || card.dataset.category === f;
-        const statusMatch = f === 'all' || f === 'available' || f === 'sold'
-          ? (f === 'all' || card.dataset.status === f)
-          : true;
-        const show = f === 'available' || f === 'sold' ? statusMatch : catMatch;
-        card.style.display = show ? '' : 'none';
-      });
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  const view = new URLSearchParams(window.location.search).get('view');
+  const heroEyebrow = document.querySelector('#page-hero .slide-eyebrow');
+  const heroTitle = document.querySelector('#page-hero h1');
+  const heroSub = document.querySelector('#page-hero .page-hero-sub');
+
+  const viewMap = {
+    sculpture: {
+      filter: 'traditional',
+      eyebrow: 'Sculpture Collection',
+      title: 'Sculpture',
+      sub: 'Explore carved and handcrafted pieces focused on form, volume, and material expression.'
+    },
+    painting: {
+      filter: 'contemporary',
+      eyebrow: 'Painting Collection',
+      title: 'Paintings',
+      sub: 'Browse painting-focused works built around color, rhythm, and layered composition.'
+    },
+    settings: {
+      filter: 'commission',
+      eyebrow: 'Settings & Installations',
+      title: 'Settings',
+      sub: 'View installation and commissioned pieces designed for interiors, public spaces, and site context.'
+    }
+  };
+
+  if (view && viewMap[view]) {
+    const selected = viewMap[view];
+    if (heroEyebrow) heroEyebrow.textContent = selected.eyebrow;
+    if (heroTitle) heroTitle.textContent = selected.title;
+    if (heroSub) heroSub.textContent = selected.sub;
+    applyFilter(selected.filter);
+    return;
+  }
+
+  const activeBtn = document.querySelector('.filter-btn.active');
+  applyFilter(activeBtn ? activeBtn.dataset.filter : 'all');
 })();
 
 /* ---------- Contact Form ---------- */
