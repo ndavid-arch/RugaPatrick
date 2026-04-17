@@ -85,7 +85,7 @@ const PATTERNS = [
   const pageKey = `rp-loader-seen:${window.location.pathname}`;
   let hasSeenPageLoader = false;
   try {
-    hasSeenPageLoader = localStorage.getItem(pageKey) === '1';
+    hasSeenPageLoader = sessionStorage.getItem(pageKey) === '1';
   } catch (e) {
     hasSeenPageLoader = false;
   }
@@ -97,7 +97,7 @@ const PATTERNS = [
   }
 
   try {
-    localStorage.setItem(pageKey, '1');
+    sessionStorage.setItem(pageKey, '1');
   } catch (e) {
     // If storage is unavailable, keep default behavior.
   }
