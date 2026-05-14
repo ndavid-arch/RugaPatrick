@@ -76,10 +76,10 @@ const PATTERNS = [
 
 /* ---------- Loader ---------- */
 (function initLoader() {
-  const loader       = document.getElementById('loader');
-  const loaderPats   = document.getElementById('loader-patterns');
-  const loaderName   = document.getElementById('loader-name');
-  const loaderSub    = document.getElementById('loader-sub');
+  const loader        = document.getElementById('loader');
+  const loaderPats    = document.getElementById('loader-patterns');
+  const loaderName    = document.querySelector('.loader-name');
+  const loaderUnder   = document.querySelector('.loader-underline');
   if (!loader) return;
 
   const pageKey = `rp-loader-seen:${window.location.pathname}`;
@@ -126,20 +126,17 @@ const PATTERNS = [
     setTimeout(() => t.classList.add('show'), 120 + i * 85);
   });
 
-  // Animate name letters
-  const letters = loaderName ? loaderName.querySelectorAll('span') : [];
-  letters.forEach((s, i) => {
-    setTimeout(() => s.classList.add('show'), 400 + i * 60);
-  });
+  // 1) Underline draws across first
+  if (loaderUnder) setTimeout(() => loaderUnder.classList.add('show'), 300);
 
-  // Show subtitle
-  if (loaderSub) setTimeout(() => loaderSub.classList.add('show'), 360 + letters.length * 55 + 140);
+  // 2) Name slides up from behind the line as a single unit
+  if (loaderName) setTimeout(() => loaderName.classList.add('show'), 700);
 
-  // Hide loader after animation
+  // Hide loader after animation finishes (line 0.9s + name 1.4s + buffer)
   window.addEventListener('load', () => {
     setTimeout(() => {
       loader.classList.add('hidden');
-    }, 5000);
+    }, 3200);
   });
 })();
 
@@ -585,16 +582,118 @@ function bindNavbar() {
     dimsEl.textContent  = d.dims;
     descEl.textContent  = d.desc;
 
-    /* Image */
-    imgEl.src = d.img || '';
-    imgEl.alt = d.title;
-    imgEl.style.display = '';
-    imgSide.classList.remove('img-placeholder');
+    /* ── Build image list (prefer data-images JSON array, fall back to data-img) ── */
+    let images = [];
+    if (d.images) {
+      try { images = JSON.parse(d.images); }
+      catch (e) { images = d.img ? [d.img] : []; }
+    } else if (d.img) {
+      images = [d.img];
+    }
+    if (!images.length) images = [''];
+
+    let currentIdx = 0;
+
+    const prevBtn    = document.getElementById('modalPrev');
+    const nextBtn    = document.getElementById('modalNext');
+    const counterEl  = document.getElementById('modalCounter');
+
+    function showImage(idx) {
+      currentIdx = (idx + images.length) % images.length;
+      imgEl.src = images[currentIdx];
+      imgEl.alt = d.title + (images.length > 1 ? ` — photo ${currentIdx + 1}` : '');
+      imgEl.style.display = '';
+      imgSide.classList.remove('img-placeholder');
+      counterEl.textContent = `${currentIdx + 1} / ${images.length}`;
+    }
+
     imgEl.onerror = () => {
       imgEl.style.display = 'none';
       imgSide.classList.add('img-placeholder');
       document.querySelector('.modal-img-placeholder').textContent = d.title;
     };
+
+    showImage(0);
+
+    /* Gallery arrows: only show when >1 image */
+    const showGallery = images.length > 1;
+    prevBtn.hidden    = !showGallery;
+    nextBtn.hidden    = !showGallery;
+    counterEl.hidden  = !showGallery;
+
+    /* Wire prev/next (replace listeners so we don't stack them) */
+    const newPrev = prevBtn.cloneNode(true);
+    const newNext = nextBtn.cloneNode(true);
+    prevBtn.replaceWith(newPrev);
+    nextBtn.replaceWith(newNext);
+    newPrev.addEventListener('click', e => {
+      e.stopPropagation();
+      if (in3D) toggle3D(false);  // exit 3D when sliding photos
+      showImage(currentIdx - 1);
+    });
+    newNext.addEventListener('click', e => {
+      e.stopPropagation();
+      if (in3D) toggle3D(false);
+      showImage(currentIdx + 1);
+    });
+
+    /* ── Remove any previous 3D viewer + toggle ── */
+    const oldViewer = imgSide.querySelector('model-viewer');
+    if (oldViewer) oldViewer.remove();
+    const oldToggle = imgSide.querySelector('.modal-3d-toggle');
+    if (oldToggle) oldToggle.remove();
+
+    /* ── 3D toggle (only if a .glb is provided) ── */
+    let viewer = null;
+    let in3D   = false;
+    let toggle = null;
+
+    function toggle3D(force) {
+      const next = (force === undefined) ? !in3D : force;
+      if (next === in3D) return;
+      in3D = next;
+
+      if (in3D) {
+        if (!viewer) {
+          viewer = document.createElement('model-viewer');
+          viewer.setAttribute('src',                d.model);
+          viewer.setAttribute('alt',                d.title);
+          viewer.setAttribute('camera-controls',    '');
+          viewer.setAttribute('auto-rotate',        '');
+          viewer.setAttribute('auto-rotate-delay',  '1500');
+          viewer.setAttribute('shadow-intensity',   '1');
+          viewer.setAttribute('exposure',           '0.9');
+          viewer.setAttribute('environment-image',  'neutral');
+          viewer.setAttribute('interaction-prompt', 'auto');
+          imgSide.appendChild(viewer);
+        }
+        imgEl.style.display = 'none';
+        viewer.style.display = 'block';
+        if (toggle) toggle.innerHTML = '<span class="cube-icon">▣</span> View photos';
+      } else {
+        imgEl.style.display = '';
+        if (viewer) viewer.style.display = 'none';
+        if (toggle) toggle.innerHTML = '<span class="cube-icon">⌗</span> View in 3D';
+      }
+    }
+
+    if (d.model) {
+      toggle = document.createElement('button');
+      toggle.className = 'modal-3d-toggle';
+      toggle.type      = 'button';
+      toggle.innerHTML = '<span class="cube-icon">⌗</span> View in 3D';
+      toggle.addEventListener('click', () => toggle3D());
+      imgSide.appendChild(toggle);
+    }
+
+    /* Keyboard nav: ← → cycle photos when modal is open */
+    const keyHandler = e => {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft'  && showGallery) { if (in3D) toggle3D(false); showImage(currentIdx - 1); }
+      if (e.key === 'ArrowRight' && showGallery) { if (in3D) toggle3D(false); showImage(currentIdx + 1); }
+    };
+    document.addEventListener('keydown', keyHandler);
+    modal._cleanupKey = () => document.removeEventListener('keydown', keyHandler);
 
     /* Action buttons */
     actionsEl.innerHTML = '';
@@ -639,6 +738,7 @@ function bindNavbar() {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (modal._cleanupKey) { modal._cleanupKey(); modal._cleanupKey = null; }
   }
 
   cards.forEach(card => card.addEventListener('click', () => openModal(card)));

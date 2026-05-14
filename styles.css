@@ -75,31 +75,42 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-align: center;
   color: var(--cream);
 }
-#loader-name {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  letter-spacing: 0.12em;
-  display: flex;
-  gap: 0.02em;
-}
-#loader-name span {
-  opacity: 0;
-  transform: translateY(20px);
+.loader-name-wrap {
+  position: relative;
   display: inline-block;
-  transition: opacity 0.55s, transform 0.55s;
+  padding-bottom: 14px;
 }
-#loader-name span.show { opacity: 1; transform: translateY(0); }
-#loader-sub {
-  font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 2vw, 1.2rem);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 0.5rem;
-  opacity: 0;
-  transition: opacity 0.5s 0.2s;
+/* Mask: hides the name until it slides up from below the line */
+.loader-name-mask {
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1.15;
 }
-#loader-sub.show { opacity: 1; }
+.loader-name {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  white-space: nowrap;
+  transform: translateY(105%);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+}
+.loader-name.show { transform: translateY(0); }
+
+/* Line that draws first across the bottom, then stays as underline */
+.loader-underline {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--cream);
+  transform: translateX(-50%);
+  transition: width 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.loader-underline.show { width: 100%; }
 
 /* ---------- Background Patterns ---------- */
 #bg-patterns {
@@ -1214,6 +1225,99 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   background: var(--cream-dark);
   overflow: hidden;
   min-height: 380px;
+}
+.modal-img-side model-viewer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  --poster-color: #ffffff;
+}
+/* When 3D viewer is mounted, the surrounding container should also be white
+   so any letterboxing matches */
+.modal-img-side:has(model-viewer:not([style*="display: none"])) {
+  background: #ffffff;
+}
+
+/* ---------- Modal gallery (prev/next arrows + counter) ---------- */
+.modal-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 20, 16, 0.65);
+  color: var(--cream);
+  font-size: 1.8rem;
+  font-family: var(--font-serif);
+  line-height: 1;
+  border: 1px solid rgba(245, 241, 234, 0.25);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  user-select: none;
+}
+.modal-gallery-arrow:hover {
+  background: var(--ink);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.modal-gallery-arrow.prev { left: 1rem; }
+.modal-gallery-arrow.next { right: 1rem; }
+.modal-gallery-arrow[hidden] { display: none; }
+
+.modal-gallery-counter {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 3;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: var(--cream);
+  background: rgba(26, 20, 16, 0.7);
+  border: 1px solid rgba(245, 241, 234, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-variant-numeric: tabular-nums;
+}
+.modal-gallery-counter[hidden] { display: none; }
+.modal-3d-toggle {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  background: rgba(26, 20, 16, 0.85);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid rgba(245, 241, 234, 0.3);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.modal-3d-toggle:hover {
+  background: var(--ink);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.cube-icon {
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--gold);
 }
 .modal-img-side img {
   width: 100%; height: 100%;

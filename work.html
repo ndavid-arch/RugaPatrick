@@ -14,6 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <!-- 3D model viewer (Google web component) -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body class="page-work">
 
@@ -21,8 +23,12 @@
   <div id="loader">
     <div id="loader-patterns"></div>
     <div id="loader-center">
-      <div id="loader-name"><span>W</span><span>o</span><span>r</span><span>k</span></div>
-      <div id="loader-sub">All Pieces</div>
+      <div class="loader-name-wrap">
+        <div class="loader-name-mask">
+          <span class="loader-name">Work</span>
+        </div>
+        <span class="loader-underline"></span>
+      </div>
     </div>
   </div>
 
@@ -50,107 +56,80 @@
     <div class="section-inner">
       <div class="work-grid">
 
-        <!-- Each card has data attributes used by the modal -->
+        <!-- ─── 3D-equipped pieces ───
+             data-images: JSON array of photos (gallery slider in the modal).
+             data-model: .glb file shown when "View in 3D" toggle is clicked. -->
 
-        <article class="wcard" data-category="traditional" data-status="available"
-          data-title="Umugabiro w'Inzira"
-          data-year="2021"
-          data-medium="Cow dung, kaolin &amp; charcoal on board"
-          data-dims="60 × 60 cm"
-          data-price="$850"
-          data-desc="A large spiral composition inspired by the winding paths of the Akagera River. Seven nested coils each represent a generation of the Gisaka kingdom's rulers. The deep ochre tones were sourced from Bugesera volcanic soil — every ring slightly different as the earth itself is never uniform."
-          data-img="assets/sculpture/sculpture-1.jpeg">
+        <article class="wcard" data-category="contemporary" data-status="available"
+          data-title="Yugi Duri"
+          data-year="2024"
+          data-medium="Carved wood &amp; mixed media"
+          data-dims="—"
+          data-price="Price on request"
+          data-desc="A sculptural piece in carved wood. Browse the photos, or switch to the 3D viewer to rotate the model and explore the form from every angle."
+          data-images='["WhatsApp Image 11.jpeg"]'
+          data-model="Yugi-Duri.glb">
           <div class="wcard-img">
-            <img src="assets/sculpture/sculpture-1.jpeg" alt="Umugabiro w'Inzira" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Umugabiro w'Inzira</div>
-            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <img src="WhatsApp Image 11.jpeg" alt="Yugi Duri" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Yugi Duri</div>
+            <div class="wcard-overlay"><span>Open</span></div>
+            <div class="wcard-status available">3D · Available</div>
           </div>
           <div class="wcard-info">
-            <h3>Umugabiro w'Inzira</h3>
-            <p class="wcard-meta">2021 · Traditional · 60 × 60 cm</p>
-            <p class="wcard-excerpt">A spiral composition inspired by the Akagera River, each coil representing a generation of the Gisaka kingdom.</p>
-          </div>
-        </article>
-
-        <article class="wcard" data-category="traditional" data-status="available"
-          data-title="Ikirere cy'Amahoro"
-          data-year="2022"
-          data-medium="Cow dung &amp; kaolin on board"
-          data-dims="80 × 80 cm"
-          data-price="$1,200"
-          data-desc="'The Sky of Peace.' Created during a residency following the commemoration season, this piece uses only black and white — the most traditional palette — to speak about silence, remembrance, and resilience. The repeating diamond grid is an ancient symbol of protection used by Gisaka royalty."
-          data-img="assets/sculpture/sculpture-2.jpeg">
-          <div class="wcard-img">
-            <img src="assets/sculpture/sculpture-2.jpeg" alt="Ikirere cy'Amahoro" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Ikirere cy'Amahoro</div>
-            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
-          </div>
-          <div class="wcard-info">
-            <h3>Ikirere cy'Amahoro</h3>
-            <p class="wcard-meta">2022 · Traditional · 80 × 80 cm</p>
-            <p class="wcard-excerpt">Black and white diamonds speaking about silence, remembrance, and resilience.</p>
-          </div>
-        </article>
-
-        <article class="wcard" data-category="commission" data-status="sold"
-          data-title="Inzira y'Ejo — Triptych"
-          data-year="2023"
-          data-medium="Natural pigments on board, 3 panels"
-          data-dims="3 × (100 × 150 cm)"
-          data-price="Sold"
-          data-desc="'The Road of Tomorrow.' A triptych commission for the Kigali Convention Centre, measuring 3 × 1.5 metres each panel. Patrick fused traditional coil patterns with bold triangular forms reflecting Rwanda's architectural growth — the ancient in conversation with the new. Now permanently installed in the main atrium."
-          data-img="images/work-3.jpg">
-          <div class="wcard-img">
-            <img src="images/work-3.jpg" alt="Inzira y'Ejo" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Inzira y'Ejo — Triptych</div>
-            <div class="wcard-overlay"><span>View</span></div>
-          </div>
-          <div class="wcard-info">
-            <h3>Inzira y'Ejo — Triptych</h3>
-            <p class="wcard-meta">2023 · Commission · 3 panels</p>
-            <p class="wcard-excerpt">Monumental triptych permanently installed at the Kigali Convention Centre.</p>
+            <h3>Yugi Duri</h3>
+            <p class="wcard-meta">2024 · Contemporary · Photo + 3D</p>
+            <p class="wcard-excerpt">Carved wood sculpture — browse photos and rotate the 3D model.</p>
+            <span class="wcard-price">Price on request</span>
           </div>
         </article>
 
         <article class="wcard" data-category="contemporary" data-status="available"
-          data-title="Amazi Menshi"
-          data-year="2023"
-          data-medium="Earth pigments &amp; cow dung on canvas"
-          data-dims="70 × 90 cm"
-          data-price="$980"
-          data-desc="'Many Waters.' Flowing zigzag lines in alternating black and deep ochre suggest rivers and tributaries as seen from above. This piece departs from the rigid geometry of classical patterning, allowing the lines to breathe and curve slightly — a contemporary take that remains deeply rooted in the vocabulary of the craft."
-          data-img="images/work-4.jpg">
+          data-title="Yugi Chest"
+          data-year="2024"
+          data-medium="Carved wood &amp; mixed media"
+          data-dims="—"
+          data-price="Price on request"
+          data-desc="A chest sculpture carved from a single block. Switch to the 3D viewer to inspect the carving detail from every angle."
+          data-images='["WhatsApp Image 2026-04-16 at 05.jpeg"]'
+          data-model="Yugi-Chest.glb">
           <div class="wcard-img">
-            <img src="images/work-4.jpg" alt="Amazi Menshi" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Amazi Menshi</div>
-            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
+            <img src="WhatsApp Image 2026-04-16 at 05.jpeg" alt="Yugi Chest" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Yugi Chest</div>
+            <div class="wcard-overlay"><span>Open</span></div>
+            <div class="wcard-status available">3D · Available</div>
           </div>
           <div class="wcard-info">
-            <h3>Amazi Menshi</h3>
-            <p class="wcard-meta">2023 · Contemporary · 70 × 90 cm</p>
-            <p class="wcard-excerpt">Flowing zigzag lines suggesting rivers and tributaries as seen from above.</p>
+            <h3>Yugi Chest</h3>
+            <p class="wcard-meta">2024 · Contemporary · Photo + 3D</p>
+            <p class="wcard-excerpt">A chest sculpture carved from a single block — full 3D rotation available.</p>
+            <span class="wcard-price">Price on request</span>
           </div>
         </article>
 
-        <article class="wcard" data-category="contemporary" data-status="sold"
-          data-title="Ubumwe"
-          data-year="2022"
-          data-medium="Kaolin, charcoal &amp; earth on board"
-          data-dims="50 × 50 cm"
-          data-price="Sold"
-          data-desc="'Unity.' Four concentric squares rotate by 45° at each ring, creating a dynamic optical effect that resembles a vortex of togetherness. This was Patrick's first piece to explore the tension between stillness and movement within a single static composition."
-          data-img="images/work-5.jpg">
+        <article class="wcard" data-category="contemporary" data-status="available"
+          data-title="Chest Plate"
+          data-year="2024"
+          data-medium="Carved wood"
+          data-dims="—"
+          data-price="Price on request"
+          data-desc="A chest plate sculpture. Browse the photograph or switch to the 3D viewer to rotate the model and explore the carved surface from every angle."
+          data-images='["WhatsApp Image .jpeg"]'
+          data-model="Chest Plate.glb">
           <div class="wcard-img">
-            <img src="images/work-5.jpg" alt="Ubumwe" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Ubumwe</div>
-            <div class="wcard-overlay"><span>View</span></div>
+            <img src="WhatsApp Image .jpeg" alt="Chest Plate" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
+            <div class="img-placeholder-label">Chest Plate</div>
+            <div class="wcard-overlay"><span>Open</span></div>
+            <div class="wcard-status available">3D · Available</div>
           </div>
           <div class="wcard-info">
-            <h3>Ubumwe</h3>
-            <p class="wcard-meta">2022 · Contemporary · 50 × 50 cm</p>
-            <p class="wcard-excerpt">Four concentric squares rotating 45° at each ring — stillness and movement as one.</p>
+            <h3>Chest Plate</h3>
+            <p class="wcard-meta">2024 · Contemporary · Photo + 3D</p>
+            <p class="wcard-excerpt">A carved chest plate sculpture — rotate the 3D model to inspect the surface in detail.</p>
+            <span class="wcard-price">Price on request</span>
           </div>
         </article>
+
+        <!-- Each card has data attributes used by the modal -->
 
         <article class="wcard" data-category="traditional" data-status="available"
           data-title="Isoko y'Ubuzima"
@@ -169,46 +148,6 @@
             <h3>Isoko y'Ubuzima</h3>
             <p class="wcard-meta">2020 · Traditional · 55 × 55 cm</p>
             <p class="wcard-excerpt">Cross within diamond within square — a Gisaka royal motif representing the four seasons.</p>
-          </div>
-        </article>
-
-        <article class="wcard" data-category="commission" data-status="available"
-          data-title="Iterambere"
-          data-year="2024"
-          data-medium="Earth pigments on board"
-          data-dims="90 × 120 cm"
-          data-price="$1,100"
-          data-desc="'Development / Progress.' Commissioned as a housewarming gift for a private collector in Kigali, this vertical format piece builds upward — each geometric band more complex than the last, symbolising growth layer upon layer. The warm terracotta palette reflects the brick and clay of Rwandan architecture."
-          data-img="images/work-7.jpg">
-          <div class="wcard-img">
-            <img src="images/work-7.jpg" alt="Iterambere" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Iterambere</div>
-            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
-          </div>
-          <div class="wcard-info">
-            <h3>Iterambere</h3>
-            <p class="wcard-meta">2024 · Commission · 90 × 120 cm</p>
-            <p class="wcard-excerpt">Bands of increasing complexity, each layer symbolising growth upon growth.</p>
-          </div>
-        </article>
-
-        <article class="wcard" data-category="contemporary" data-status="available"
-          data-title="Inkuru y'Abantu"
-          data-year="2024"
-          data-medium="Cow dung, kaolin &amp; iron oxide on board"
-          data-dims="75 × 75 cm"
-          data-price="$890"
-          data-desc="'The Story of People.' A grid of 16 small panels unified into one large composition — each sub-panel uses a different traditional motif, yet together they form a coherent whole. The piece is Patrick's meditation on community: individual voices creating a collective story."
-          data-img="images/work-8.jpg">
-          <div class="wcard-img">
-            <img src="images/work-8.jpg" alt="Inkuru y'Abantu" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Inkuru y'Abantu</div>
-            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
-          </div>
-          <div class="wcard-info">
-            <h3>Inkuru y'Abantu</h3>
-            <p class="wcard-meta">2024 · Contemporary · 75 × 75 cm</p>
-            <p class="wcard-excerpt">16 individual motifs unified into one — individual voices forming a collective story.</p>
           </div>
         </article>
 
@@ -232,26 +171,6 @@
           </div>
         </article>
 
-        <article class="wcard" data-category="contemporary" data-status="available"
-          data-title="Inyabutatu"
-          data-year="2022"
-          data-medium="Earth pigments on board"
-          data-dims="65 × 65 cm"
-          data-price="$680"
-          data-desc="'The Triangle.' An exploration of a motif rarely centred in classical patterning — the triangle — as primary form. Three concentric triangles in ochre, red-brown, and black build inward to a single point of convergence. The work explores how ancient geometry can feel radical when isolated and amplified."
-          data-img="images/work-10.jpg">
-          <div class="wcard-img">
-            <img src="images/work-10.jpg" alt="Inyabutatu" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Inyabutatu</div>
-            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
-          </div>
-          <div class="wcard-info">
-            <h3>Inyabutatu</h3>
-            <p class="wcard-meta">2022 · Contemporary · 65 × 65 cm</p>
-            <p class="wcard-excerpt">Three concentric triangles converging to a single point — ancient geometry made radical.</p>
-          </div>
-        </article>
-
         <article class="wcard" data-category="traditional" data-status="sold"
           data-title="Impano"
           data-year="2023"
@@ -272,26 +191,6 @@
           </div>
         </article>
 
-        <article class="wcard" data-category="traditional" data-status="available"
-          data-title="Inkomoko"
-          data-year="2024"
-          data-medium="Natural pigments &amp; cow dung on board"
-          data-dims="70 × 70 cm"
-          data-price="$950"
-          data-desc="'The Origin.' Patrick's most recent traditional piece and one of his most restrained. A single large coil on a plain black ground — the spiral emerging from the centre as if drawn from memory, from muscle, from somewhere before thought. A meditation on where this art form comes from and where it is going."
-          data-img="assets/sculpture/sculpture-6.jpeg">
-          <div class="wcard-img">
-            <img src="assets/sculpture/sculpture-6.jpeg" alt="Inkomoko" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder');this.style.display='none'"/>
-            <div class="img-placeholder-label">Inkomoko</div>
-            <div class="wcard-overlay"><span>View &amp; Buy</span></div>
-          </div>
-          <div class="wcard-info">
-            <h3>Inkomoko</h3>
-            <p class="wcard-meta">2024 · Traditional · 70 × 70 cm</p>
-            <p class="wcard-excerpt">A single coil on black ground — a meditation on origin, memory, and where this art is going.</p>
-          </div>
-        </article>
-
       </div><!-- .work-grid -->
     </div>
   </section>
@@ -305,6 +204,10 @@
         <div class="modal-img-side">
           <img id="modal-img" src="" alt="" />
           <div class="modal-img-placeholder"></div>
+          <!-- Gallery navigation (hidden by default, JS shows when >1 image) -->
+          <button class="modal-gallery-arrow prev" id="modalPrev" aria-label="Previous photo" hidden>‹</button>
+          <button class="modal-gallery-arrow next" id="modalNext" aria-label="Next photo" hidden>›</button>
+          <div class="modal-gallery-counter" id="modalCounter" hidden></div>
         </div>
         <div class="modal-info-side">
           <p class="slide-eyebrow" id="modal-meta"></p>
