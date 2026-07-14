@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ---------- SVG patterns ---------- */
-const PATTERNS = [
+/*const PATTERNS = [
   // 1 — Square spiral (coil)
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
     <path d="M4,4 L56,4 L56,56 L4,56 L4,11 L49,11 L49,49 L11,49 L11,18 L42,18 L42,42 L18,42 L18,25 L35,25 L35,35 L25,35 L25,30 L30,30"
@@ -72,7 +72,7 @@ const PATTERNS = [
     <path d="M22,38 L22,22 L38,22 L38,38 L30,38"
       fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square"/>
   </svg>`,
-];
+];*/
 
 /* ---------- Loader ---------- */
 (function initLoader() {
